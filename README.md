@@ -7,6 +7,7 @@ Designed for fullstack developers using:
 - PHP / MySQL / WordPress
 - Python (future-oriented)
 - Secure GUI access & editor integration (VS Code)
+- 🎥 Optional setup for YouTube creators
 
 ---
 
@@ -15,6 +16,7 @@ Designed for fullstack developers using:
 ### 📁 Files
 - `setup.sh`: Automatically creates and launches an Ubuntu-based Distrobox container and starts the provisioning script.
 - `ubuntu-init.sh`: Runs inside the container, installs all required tools, configures MySQL, Node, Python, pipx, etc.
+- `media-tools.sh`: Installs OBS Studio, Kdenlive, SubtitleEditor and creates .desktop launchers for content creation.
 - `code-distrobox.desktop`: Launches VS Code from Distrobox with GUI access.
 - `vscode-profile.json`: Adds a custom terminal profile to open the Devbox directly inside VS Code.
 
@@ -36,7 +38,7 @@ sudo pacman -Syu distrobox podman --noconfirm
 ```bash
 git clone https://github.com/your-user/steamdeck-devbox.git
 cd steamdeck-devbox
-chmod +x setup.sh ubuntu-init.sh
+chmod +x setup.sh ubuntu-init.sh media-tools.sh
 ```
 
 2. **Run setup**:
@@ -44,7 +46,12 @@ chmod +x setup.sh ubuntu-init.sh
 ./setup.sh
 ```
 
-3. **After setup**:
+3. **Run media tools setup** (optional, for YouTube creators):
+```bash
+./media-tools.sh
+```
+
+4. **After setup**:
 - You can enter your container manually:
   ```bash
   distrobox enter devbox
@@ -73,12 +80,15 @@ Inside the Ubuntu container:
   - Installed inside Distrobox, and can be launched from host
 - **Project Folders**:
   - `~/Projects/React`, `Next`, `Expo`, `PHP`, `WordPress`, `Python`
+- **Media Tools** (via `media-tools.sh`):
+  - OBS Studio, Kdenlive, SubtitleEditor
+  - `.desktop` launchers created on the Desktop
 
 ---
 
 ## 🖥️ GUI Access (xhost)
 
-The script automatically adds `xhost +local:` to your `.bashrc` to enable GUI apps (like VS Code) from Distrobox to run on the Steam Deck host.
+The script automatically adds `xhost +local:` to your `.bashrc` to enable GUI apps (like VS Code or OBS) from Distrobox to run on the Steam Deck host.
 
 ---
 
@@ -119,8 +129,10 @@ Copy `vscode-profile.json` into your VS Code `settings.json`:
 steamdeck-devbox/
 ├── setup.sh
 ├── ubuntu-init.sh
+├── media-tools.sh
 ├── vscode-profile.json
-└── code-distrobox.desktop
+├── code-distrobox.desktop
+└── README.md
 ```
 
 ---
@@ -135,4 +147,4 @@ steamdeck-devbox/
 
 ## 🙌 Credits
 
-Created for devs who want the power of Linux + Steam Deck mobility. Enjoy hacking anywhere!
+Created for devs who want the power of Linux + Steam Deck mobility — and now, content creators too. 🎥🔥
