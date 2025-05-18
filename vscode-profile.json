@@ -1,0 +1,7 @@
+"terminal.integrated.profiles.linux": {
+  "Devbox (Ubuntu)": {
+    "path": "bash",
+    "args": ["-c", "distrobox enter devbox"]
+  }
+},
+"terminal.integrated.defaultProfile.linux": "Devbox (Ubuntu)"
