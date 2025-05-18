@@ -5,7 +5,7 @@
 ![Status](https://img.shields.io/badge/status-stable-success)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-> A portable fullstack development environment powered by Ubuntu + Distrobox on Steam Deck Desktop Mode.
+> A portable fullstack development + content creation environment powered by Ubuntu + Distrobox on Steam Deck Desktop Mode.
 
 ---
 
@@ -16,9 +16,10 @@
 - **PHP**, **MySQL**, **WordPress**
 - **Python** & cybersecurity tools
 
-✅ GUI apps like **VS Code** run from inside the Distrobox container  
-✅ Includes `.desktop` launcher and integrated terminal profile for seamless dev flow  
-✅ Full automation with idempotent script — run it again safely
+✅ Media creators: preconfigured **OBS Studio**, **Kdenlive**, and **Subtitle Editor**  
+✅ GUI apps like **VS Code** and **OBS** run from inside the Distrobox container  
+✅ Includes `.desktop` launchers and integrated terminal profiles  
+✅ Full automation with smart checks — re-run safely anytime
 
 ---
 
@@ -28,13 +29,18 @@
 sudo pacman -Syu distrobox podman --noconfirm
 git clone https://github.com/your-username/steamdeck-devbox.git
 cd steamdeck-devbox
-chmod +x setup.sh ubuntu-init.sh
+chmod +x setup.sh ubuntu-init.sh media-tools.sh
 ./setup.sh
 ```
 
-🧠 After installation:
-- Launch **VS Code (Ubuntu Devbox)** from application menu  
-- Or enter manually:
+🎥 (Optional) For content creators:
+```bash
+./media-tools.sh
+```
+
+🧠 After setup:
+- Launch **VS Code (Devbox)** or **OBS Studio (Devbox)** from your Desktop
+- Or enter the container manually:
   ```bash
   distrobox enter devbox
   ```
@@ -52,7 +58,8 @@ chmod +x setup.sh ubuntu-init.sh
 | Mobile Dev          | expo-cli, serve                                                       |
 | Python Stack        | pipx, virtualenv, black, httpie                                       |
 | Security Utilities  | nmap, whois, net-tools, ufw, dnsutils                                 |
-| GUI Integration     | VS Code (inside container), GUI xhost setup                           |
+| Media Creation      | OBS Studio, Kdenlive, Subtitle Editor                                 |
+| GUI Integration     | VS Code / media tools with xhost + .desktop launchers                 |
 
 ---
 
@@ -60,37 +67,37 @@ chmod +x setup.sh ubuntu-init.sh
 
 ```
 steamdeck-devbox/
-├── setup.sh                 # Main entrypoint — creates and configures the container
-├── ubuntu-init.sh          # Runs inside the container, installs all tools
-├── code-distrobox.desktop  # GUI launcher for VS Code (optional)
+├── setup.sh                 # Creates and configures the container
+├── ubuntu-init.sh          # Installs dev tools and environments
+├── media-tools.sh          # Installs media creation apps and desktop launchers
+├── code-distrobox.desktop  # VS Code launcher
 ├── vscode-profile.json     # Terminal integration for VS Code
-└── README.md               # This file
+└── README.md / README_GITHUB.md
 ```
 
 ---
 
 ## 📌 Notes
 
-- Works entirely offline after setup (except for package updates)
-- All components are modular — you can disable parts if you don’t need WordPress or Firebase, etc.
-- Uses only official package sources
+- Works offline after setup (except package updates)
+- Modular design — enable/disable sections easily
+- Minimal external dependencies — built on official Ubuntu repos
 
 ---
 
 ## 🔐 Optional Next Steps
 
-- Secure passwords via `.env` or vault
-- Add dotfile sync
-- Enable remote SSH or devcontainer integration
+- Secure MySQL/Firebase credentials with `.env` or encrypted vaults
+- Add custom aliases, devcontainer support, and cloud sync
 
 ---
 
 ## 🙌 Author
 
-Made with 💻 on a Steam Deck  
-Inspired by the idea that your dev setup should travel with you.
+Made with ❤️ on a Steam Deck.  
+Now you can **develop AND create content** — anywhere, anytime. 🎮💻🎥
 
-> Feel free to fork, tweak, and share your improvements!
+> Fork it, hack it, and share your version with the world!
 
 ---
 
